@@ -1,3 +1,4 @@
+from types import prepare_class
 import numpy as np
 import pandas as pd
 import sklearn.datasets
@@ -42,4 +43,39 @@ breast_cancer_dataframe['diagnosis'] = breast_cancer_dataset.target
 X = breast_cancer_dataframe.drop(columns='diagnosis', axis=1)
 Y = breast_cancer_dataframe['diagnosis']
 
-print (Y)
+#Need to split the dataset into training and testing data. We will allocated 80% to training and 20% to test
+X_training, X_test, Y_training, Y_test = train_test_split(X, Y, test_size=0.2, random_state=2)
+
+#Check if the splitting of the data was done correctly
+# print(X.shape, X_training.shape, X_test.shape)
+
+#Now we need to initialize an instance of the logic regression model that we imported and then train it
+model = LogisticRegression()
+model.fit(X_training, Y_training)
+
+#Evaluate the trained model to see how accurate it is
+X_training_prediction = model.predict(X_training)
+training_data_acc = accuracy_score(Y_training, X_training_prediction)
+
+print('The Accuracy predicted by the training is = ', training_data_acc)
+
+#Now you need to determine the Accuracy prediction with the test data 
+X_test_prediction = model.predict(X_test)
+test_data_acc = accuracy_score(Y_test, X_test_prediction)
+print('The Accuracy predicted by the test data is = ', test_data_acc)
+
+#We build out the predictive system using data from https://drive.google.com/file/d/1wDjDuqDPAJd1cQEICcu19J9vrjFAWJ1H/view we will provide input data and see how accurate prediction is
+input_data = (13.54,14.36,87.46,566.3,0.09779,0.08129,0.06664,0.04781,0.1885,0.05766,0.2699,0.7886,2.058,23.56,0.008462,0.0146,0.02387,0.01315,0.0198,0.0023,15.11,19.26,99.7,711.2,0.144,0.1773,0.239,0.1288,0.2977,0.07259)
+
+#The raw csv data has to be converted into a numpy array
+input_data_np = np.asarray(input_data)
+
+#Now you need to reshape the data so the model knows it only predicting for one vaue
+input_data_reshaped = input_data_np.reshape(1, -1)
+
+prediction = model.predict(input_data_reshaped)
+
+if prediction[0] == 1:
+    print('The breast cancer is Malignant - ', prediction)
+else:
+    print('The breast cancer is Benign - ', prediction)
