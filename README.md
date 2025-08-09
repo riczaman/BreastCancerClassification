@@ -1,8 +1,50 @@
-# Breast Cancer Classification with Logistic Regression
+# MedPredict AI - Breast Cancer Prediction Web Application
+
+Advanced AI-powered breast cancer detection system using machine learning for educational purposes and breast cancer awareness.
+
+## Demo
+
+![Breast Cancer Prediction App Demo](breast-cancer-prediction-app/demo/app.gif)
+
+## ✨ Features & Highlights
+
+- **AI-Powered Detection**: Advanced machine learning algorithms for breast cancer prediction
+- **Interactive 3D Visualization**: Three.js powered cell nucleus rendering
+- **Comprehensive Dataset Analysis**: Wisconsin Breast Cancer Dataset with 30 diagnostic features
+- **Real-time Predictions**: Instant results with confidence intervals
+- **Educational Focus**: Designed for learning and breast cancer awareness
+
+## Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+## Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/breast-cancer-prediction-app.git
+   cd breast-cancer-prediction-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
+
+4. **Open your browser**
+   Navigate to http://localhost:3000
+
+## Breast Cancer Classification with Logistic Regression
 
 This project uses a logistic regression model to classify breast cancer tumors as **benign (0)** or **malignant (1)** based on fine needle aspiration (FNA) data.
 
-## Overview
+### Overview
 
 - **Dataset**: Breast cancer FNA dataset with binary labels.
 - **Label Meaning**:
@@ -10,7 +52,7 @@ This project uses a logistic regression model to classify breast cancer tumors a
   - `1`: Malignant
 - **Goal**: Predict tumor classification from input features using logistic regression.
 
-## Project Structure
+### Project Structure
 
 1. **Data Acquisition**
    - Load raw FNA dataset (CSV or similar).
@@ -32,7 +74,7 @@ This project uses a logistic regression model to classify breast cancer tumors a
    - Accept new input samples.
    - Predict malignancy probability using the trained model.
 
-## How to Run
+### How to Run
 
 ```bash
 # Install dependencies
@@ -43,3 +85,4 @@ python train.py
 
 # Run prediction on new data (example)
 python predict.py --input sample_input.csv
+```
